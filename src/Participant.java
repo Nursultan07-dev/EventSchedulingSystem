@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Participant {
     private String name;
     private String contact;
@@ -29,5 +31,18 @@ public class Participant {
                 "name='" + name + '\'' +
                 ", contact='" + contact + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Participant that = (Participant) o;
+        return Objects.equals(name, that.name) && Objects.equals(contact, that.contact);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, contact);
     }
 }

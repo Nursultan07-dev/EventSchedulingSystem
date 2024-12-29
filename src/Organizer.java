@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Organizer {
     private String name;
     private String contact;
@@ -33,5 +35,18 @@ public class Organizer {
                 "name='" + name + '\'' +
                 ", contact='" + contact + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Organizer organizer = (Organizer) o;
+        return Objects.equals(name, organizer.name) && Objects.equals(contact, organizer.contact);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, contact);
     }
 }
